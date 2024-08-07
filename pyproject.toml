@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "connext-monitor"
+version = "0.1.0"
+description = ""
+authors = ["Harry Lee Chak Chiu <harrier1126@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pydantic = "^2.8.2"
+# NOTE: using v7 beta as v6.20.1 breaks with Python 3.11+
+web3 = {git = "https://github.com/ethereum/web3.py.git", rev = "v7.0.0-beta.9"}
+eth-abi = "^5.1.0"
+apscheduler = "^3.10.4"
+sqlalchemy = "^2.0.32"
+discord-py = "^2.4.0"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.2"
+hexbytes = "^1.2.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

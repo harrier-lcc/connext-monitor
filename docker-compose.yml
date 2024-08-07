@@ -1,0 +1,7 @@
+services:
+  monitor:
+    build: .
+    restart: unless-stopped
+    environment:
+      - CONNEXT_LOG_LEVEL=INFO
+      - CONNEXT_CONFIG=dev_config.toml

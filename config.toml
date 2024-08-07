@@ -1,0 +1,53 @@
+# Maximum number of thread worker for handling transfer events
+max_worker = 2
+
+[alerts]
+# ISO 8601 maximum wait time for execution to generate alert
+execution_max_time = "PT5M"
+# ISO 8601 maximum wait time for reconciliation to generate alert
+reconcile_max_time = "PT1H"
+# Current observing domains. Monitor will ignore other domains as events may not be observed.
+domains = [6648936, 1886350457, 1634886255]
+
+# for each chains, use the chain name to identify the chain config
+[chains.ethereum]
+# Check https://docs.connext.network/resources/deployments for the values
+domain_id = 6648936
+chain_id = 1
+core_contract = "0x8898B472C54c31894e3B9bb83cEA802a5d0e63C6"
+
+[chains.polygon]
+domain_id = 1886350457
+chain_id = 137
+core_contract = "0x11984dc4465481512eb5b777E44061C158CF2259"
+
+[chains.arbitrum-one]
+domain_id = 1634886255
+chain_id = 42161
+core_contract = "0xEE9deC2712cCE65174B561151701Bf54b99C24C8"
+
+# Provider configuration
+[providers.ethereum]
+url = "wss://eth-mainnet.g.alchemy.com/v2/..."
+# Currently only support "ws" and "ws-mock". 
+# The only difference is ws-mock supports observing data from a given blocks to simulate handling of past events
+type = "ws-mock"
+# for ws-mock only.
+from_block = "0x1387490"
+
+[providers.polygon]
+url = "wss://polygon-mainnet.g.alchemy.com/v2/..."
+type = "ws"
+
+[providers.arbitrum-one]
+url = "wss://arb-mainnet.g.alchemy.com/v2/..."
+type = "ws"
+
+[alert_providers.discord]
+# Discord channel to broadcast alerts
+channel_id = 0
+app_token = ""
+
+[scheduler]
+# persistent storage for the alert scheduler
+conn_str = "sqlite:///alert_schedule.db"

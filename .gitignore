@@ -1,0 +1,4 @@
+**/__pycache__
+**/.pytest_cache
+dev_config.toml
+alert_schedule.db
